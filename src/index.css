@@ -1,0 +1,39 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to your global.css or Tailwind's custom CSS */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+@layer utilities {
+  .custom-border {
+    position: relative;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    background: linear-gradient(135deg, #ffcc33, #ff66cc);
+    border: 6px solid white;
+    border-radius: 12px; /* Adds subtle rounding */
+  }
+
+  .custom-border img {
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    background: white;
+  }
+}
+
+/* Apply dark mode styles using the 'dark' class */
+body {
+  @apply bg-white text-gray-900;
+}
+
+body.dark {
+  @apply bg-gray-900 text-white;
+}
+
+
