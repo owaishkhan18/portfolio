@@ -3,17 +3,19 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
+    title:'Tutor App',
+    description:'Tutor app where student and techers collabrate each otheres',
+    link:"#",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbVY91aKCI_s4PdzZobTJ9EQSYxJl0usKt1w&s"
+  },
+
+  {
     title: 'Web chat app',
     description: 'A modern web chat app where user can interact with friends',
     link: '#',
     image: 'https://res.cloudinary.com/smartsupp/image/upload/w_1440,h_1041,q_auto,f_auto,dpr_auto,c_fill/v1652255012/upload/Everything_starts_with_a_conversation_2x_oaocqd.png', // Example image URL
   },
-  {
-    title: 'Sell App ',
-    description: 'Where user can sell anything on that app',
-    link: '#',
-    image: 'https://i.ytimg.com/vi/zVO5zfMGHWI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAhOxfmHv775LaMsuwBjegXSpq-5g', // Example image URL
-  },
+  
 ];
 
 const Projects = () => {

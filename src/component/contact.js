@@ -13,10 +13,10 @@ const Contact = () => {
 
     try {
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        'service_hts5rb9',
+        'template_87838ht',
         form.current,
-        'YOUR_USER_ID'
+        '-66Isfjj-h8R2uLQo'
       );
       setMessage({ text: 'Message sent successfully!', type: 'success' });
       form.current.reset();
