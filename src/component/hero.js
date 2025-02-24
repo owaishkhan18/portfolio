@@ -66,10 +66,10 @@ const Hero = ({ name, description, imageUrl, stats, socialLinks }) => {
           <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition">
             <Instagram size={28} />
           </a>
-          <a href={https://github.com/owaishkhan18} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+          <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
             <Github size={28} />
           </a>
-          <a href={https://www.linkedin.com/in/owaish-khan-352a02230/} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500 transition">
+          <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500 transition">
             <Linkedin size={28} />
           </a>
         </div>
