@@ -56,3 +56,23 @@ body.dark {
   @apply bg-gray-900 text-white;
 }
 
+@keyframes backgroundWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-backgroundWave {
+  background-size: 200% 200%;
+  animation: backgroundWave 10s infinite alternate ease-in-out;
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 5px #34d399, 0 0 10px #34d399; }
+  50% { text-shadow: 0 0 10px #34d399, 0 0 20px #34d399; }
+  100% { text-shadow: 0 0 5px #34d399, 0 0 10px #34d399; }
+}
+
+.animate-textGlow {
+  animation: textGlow 3s infinite alternate;
+}

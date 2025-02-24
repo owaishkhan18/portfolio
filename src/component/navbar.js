@@ -1,119 +1,56 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { Home, FolderOpen, BadgeCheck, Mail } from "lucide-react";
 
-const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // Sidebar state
+const Navbar = ({ activeSection, onNavClick }) => {
+  const [isVisible, setIsVisible] = useState(true);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsVisible(window.scrollY <= 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navItems = [
+    { id: "home", icon: <Home size={22} />, label: "Home" },
+    { id: "projects", icon: <FolderOpen size={22} />, label: "Projects" },
+    { id: "skills", icon: <BadgeCheck size={22} />, label: "Skills" },
+    { id: "contact", icon: <Mail size={22} />, label: "Contact" },
+  ];
+
+  const handleNavClick = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    onNavClick(id); // Update active section
   };
 
   return (
-    <>
-      {/* Navbar */}
-      <nav
-        className={`p-4 fixed w-full z-50 transition-all duration-300 flex justify-between items-center ${
-          darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
-        } shadow-md`}
-      >
-        <div className="container mx-auto flex justify-between items-center">
-          {/* Sidebar Menu Button (Only for Mobile) */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 focus:outline-none md:hidden"
-            aria-label="Toggle Menu"
-          >
-            ☰
-          </button>
-
-          {/* Logo */}
-          <h1 className="text-3xl font-bold">
-            <a href="#hero" className="hover:text-blue-500 transition-colors">
-              My<span className="text-blue-500">Portfolio</span>
-            </a>
-          </h1>
-
-          {/* Desktop Navigation (Visible on md and larger screens) */}
-          <ul className="hidden md:flex space-x-8 text-lg font-medium">
-            <li>
-              <a href="#hero" className="hover:text-blue-500 transition-colors">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#projects" className="hover:text-blue-500 transition-colors">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-blue-500 transition-colors">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-blue-500 transition-colors">
-                Contact
-              </a>
-            </li>
-          </ul>
-
-          {/* Dark Mode Toggle (Inside Navbar) */}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none transition-colors"
-            aria-label="Toggle Dark Mode"
-          >
-            {darkMode ? '🌞' : '🌙'}
-          </button>
-        </div>
-      </nav>
-
-      {/* Sidebar Menu (Only for Mobile) */}
-      <motion.div
-        initial={{ x: '-100%' }}
-        animate={{ x: menuOpen ? '0%' : '-100%' }}
-        transition={{ duration: 0.3 }}
-        className="fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-md z-50 p-5 md:hidden"
-      >
-        {/* Close Button */}
+    <nav
+      className={`fixed top-5 left-1/2 transform -translate-x-1/2 bg-gray-900 bg-opacity-80 backdrop-blur-lg p-3 px-4 rounded-full shadow-lg flex space-x-4 z-50 border border-gray-700 transition-all duration-500 ${
+        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
+      }`}
+    >
+      {navItems.map((item) => (
         <button
-          onClick={() => setMenuOpen(false)}
-          className="text-2xl absolute top-4 right-4 focus:outline-none"
+          key={item.id}
+          onClick={() => handleNavClick(item.id)}
+          className={`relative flex items-center px-3 py-2 rounded-full transition-all group 
+            ${
+              activeSection === item.id
+                ? "bg-emerald-500 text-gray-900 shadow-lg scale-110"
+                : "bg-gray-800 text-white hover:bg-emerald-400 hover:text-black"
+            }`}
         >
-          ❌
+          {item.icon}
+          {/* Show text on medium (md) screens and larger */}
+          <span className="hidden md:inline text-sm font-medium ml-2">{item.label}</span>
         </button>
-
-        {/* Sidebar Navigation */}
-        <ul className="mt-10 space-y-6 text-lg font-medium">
-          <li>
-            <a href="#hero" className="hover:text-blue-500 transition-colors" onClick={() => setMenuOpen(false)}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#projects" className="hover:text-blue-500 transition-colors" onClick={() => setMenuOpen(false)}>
-              Projects
-            </a>
-          </li>
-          <li>
-            <a href="#about" className="hover:text-blue-500 transition-colors" onClick={() => setMenuOpen(false)}>
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="hover:text-blue-500 transition-colors" onClick={() => setMenuOpen(false)}>
-              Contact
-            </a>
-          </li>
-        </ul>
-      </motion.div>
-    </>
+      ))}
+    </nav>
   );
 };
 
