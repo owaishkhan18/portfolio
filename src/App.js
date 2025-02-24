@@ -78,9 +78,9 @@ function App() {
             { value: "+3", label: "Projects Completed" },
           ]}
           socialLinks={{
-            instagram: "https://instagram.com/your-profile",
-            github: "https://github.com/your-profile",
-            linkedin: "https://linkedin.com/in/your-profile",
+            instagram: "https://instagram.com",
+            github: "https://github.com/owaishkhan18",
+            linkedin: "https://www.linkedin.com/in/owaish-khan-352a02230/",
           }}
         />
       </section>
