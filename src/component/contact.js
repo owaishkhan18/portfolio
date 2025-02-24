@@ -108,7 +108,7 @@ const Contact = () => {
               id="name"
               type="text"
               name="name"
-              placeholder="John Doe"
+              placeholder="Owaish khan"
               className="w-full p-3 border border-gray-600 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               required
             />
@@ -123,7 +123,7 @@ const Contact = () => {
               id="email"
               type="email"
               name="email"
-              placeholder="example@email.com"
+              placeholder="owaishkhan18@email.com"
               className="w-full p-3 border border-gray-600 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               required
             />

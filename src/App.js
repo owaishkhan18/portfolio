@@ -4,25 +4,32 @@ import Hero from "./component/hero";
 import Projects from "./component/projects";
 import Contact from "./component/contact";
 import Foot from "./component/foot";
-import Cv from "./assest/images/owiahkhanresume.pdf";
-import heroImage from "./assest/images/1740144288403.jpg";
 import Skills from "./component/Skills";
+import { ArrowUp } from "lucide-react";
+import heroImage from "./assest/images/1740144288403.jpg";
 
 function App() {
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
-  const skillsRef = useRef(null); // ✅ Fixed: Lowercase "skillsRef"
+  const skillsRef = useRef(null);
 
   const [activeSection, setActiveSection] = useState("home");
+  const [showScrollTop, setShowScrollTop] = useState(false); // State for "Back to Top"
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
 
+      if (scrollPosition > 500) {
+        setShowScrollTop(true); // Show button after scrolling down
+      } else {
+        setShowScrollTop(false); // Hide button at the top
+      }
+
       if (contactRef.current && scrollPosition >= contactRef.current.offsetTop) {
         setActiveSection("contact");
-      } else if (skillsRef.current && scrollPosition >= skillsRef.current.offsetTop) { // ✅ Fixed: Used skillsRef
+      } else if (skillsRef.current && scrollPosition >= skillsRef.current.offsetTop) {
         setActiveSection("skills");
       } else if (projectsRef.current && scrollPosition >= projectsRef.current.offsetTop) {
         setActiveSection("projects");
@@ -38,7 +45,7 @@ function App() {
   const scrollToSection = (section) => {
     const sectionRefs = {
       home: heroRef,
-      skills: skillsRef, // ✅ Fixed: Lowercase "skills"
+      skills: skillsRef,
       projects: projectsRef,
       contact: contactRef,
     };
@@ -46,6 +53,10 @@ function App() {
     if (sectionRefs[section] && sectionRefs[section].current) {
       sectionRefs[section].current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -75,7 +86,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section ref={skillsRef}> {/* ✅ Fixed: Assigned ref to section */}
+      <section ref={skillsRef}>
         <Skills />
       </section>
 
@@ -91,6 +102,16 @@ function App() {
 
       {/* Footer */}
       <Foot />
+
+      {/* Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-5 right-5 bg-emerald-500 text-black p-3 rounded-full shadow-lg hover:bg-emerald-400 transition-all duration-300"
+        >
+          <ArrowUp size={22} />
+        </button>
+      )}
     </div>
   );
 }
