@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Social Links */}
         <div className="flex justify-center space-x-6">
           <a
-            href="https://www.linkedin.com/in/your-profile"
+            href="https://www.linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-3xl text-gray-300 hover:text-emerald-400 transition-all duration-300 transform hover:scale-110"
@@ -18,7 +18,7 @@ const Footer = () => {
             <FaLinkedin />
           </a>
           <a
-            href="https://github.com/your-username"
+            href="https://github.com/owaishkhan18"
             target="_blank"
             rel="noopener noreferrer"
             className="text-3xl text-gray-300 hover:text-gray-400 transition-all duration-300 transform hover:scale-110"
@@ -26,7 +26,7 @@ const Footer = () => {
             <FaGithub />
           </a>
           <a
-            href="mailto:your-email@example.com"
+            href="mailto: owaishkhan18@gmail.com"
             className="text-3xl text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110"
           >
             <FaEnvelope />
