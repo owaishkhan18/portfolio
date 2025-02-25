@@ -15,8 +15,8 @@ const Navbar = ({ activeSection, onNavClick }) => {
 
   const navItems = [
     { id: "home", icon: <Home size={22} />, label: "Home" },
-    { id: "projects", icon: <FolderOpen size={22} />, label: "Projects" },
     { id: "skills", icon: <BadgeCheck size={22} />, label: "Skills" },
+    { id: "projects", icon: <FolderOpen size={22} />, label: "Projects" },
     { id: "contact", icon: <Mail size={22} />, label: "Contact" },
   ];
 
